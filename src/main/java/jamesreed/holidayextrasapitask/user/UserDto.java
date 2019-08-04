@@ -8,6 +8,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private Instant created;
+    private Instant updated;
 
     // For spring
     private UserDto() {}
@@ -18,6 +19,7 @@ public class UserDto {
         this.firstName = b.firstName;
         this.lastName = b.lastName;
         this.created = b.created;
+        this.updated = b.updated;
     }
 
     public Long getId() {
@@ -40,12 +42,17 @@ public class UserDto {
         return created;
     }
 
+    public Instant getUpdated() {
+        return updated;
+    }
+
     public static class Builder {
         private Long id;
         private String email;
         private String firstName;
         private String lastName;
         private Instant created;
+        private Instant updated;
 
         public Builder withId(Long id) {
             this.id = id;
@@ -72,19 +79,13 @@ public class UserDto {
             return this;
         }
 
+        public Builder withUpdated(Instant updated) {
+            this.updated = updated;
+            return this;
+        }
+
         public UserDto build() {
             return new UserDto(this);
         }
-    }
-
-    @Override
-    public String toString() {
-        return "UserDto{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", created=" + created +
-                '}';
     }
 }

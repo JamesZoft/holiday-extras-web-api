@@ -23,12 +23,14 @@ public class User {
     @Column(name = "created", insertable = false, updatable = false)
     private Instant created;
 
+    private Instant updated;
+
     public User(Builder b) {
         id = b.id;
         email = b.email;
         firstName = b.firstName;
         lastName = b.lastName;
-        created = b.created;
+        updated = b.updated;
     }
 
     // For hibernate
@@ -39,7 +41,7 @@ public class User {
         private @NotNull String email;
         private String firstName;
         private String lastName;
-        private Instant created;
+        private Instant updated;
 
         public Builder withId(Long id) {
             this.id = id;
@@ -61,8 +63,8 @@ public class User {
             return this;
         }
 
-        public Builder withCreated(Instant created) {
-            this.created = created;
+        public Builder withUpdated(Instant updated) {
+            this.updated = updated;
             return this;
         }
 
@@ -91,18 +93,5 @@ public class User {
         return created;
     }
 
-    public void setCreated(Instant created) {
-        this.created = created;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", created=" + created +
-                '}';
-    }
+    public Instant getUpdated() { return updated; }
 }

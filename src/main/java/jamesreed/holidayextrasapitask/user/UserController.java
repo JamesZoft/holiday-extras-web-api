@@ -3,6 +3,9 @@ package jamesreed.holidayextrasapitask.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin("*")
 @RestController
 public class UserController {
 
@@ -26,5 +29,10 @@ public class UserController {
     @RequestMapping(method = RequestMethod.DELETE, value = "/user/{id}")
     public void delete(@PathVariable final Long id) {
         userService.delete(id);
+    }
+
+    @RequestMapping(value = "/user")
+    public List<UserDto> list() {
+        return userService.list();
     }
 }

@@ -14,6 +14,7 @@ class UserDtoMapper {
                 withFirstName(user.getFirstName()).
                 withLastName(user.getLastName()).
                 withCreated(user.getCreated()).
+                withUpdated(user.getUpdated()).
                 build();
     }
 
@@ -23,6 +24,7 @@ class UserDtoMapper {
                 withEmail(dto.getEmail()).
                 withFirstName(dto.getFirstName()).
                 withLastName(dto.getLastName()).
+                withUpdated(Instant.now()).
                 build();
     }
 }

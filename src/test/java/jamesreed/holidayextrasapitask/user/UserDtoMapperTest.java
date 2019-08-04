@@ -31,7 +31,7 @@ class UserDtoMapperTest {
                 withId(dto.getId()).
                 build();
 
-        assertTrue(new ReflectionEquals(user).matches(mapper.mapDtoToUser(dto)));
+        assertTrue(new ReflectionEquals(user, "updated").matches(mapper.mapDtoToUser(dto)));
     }
 
     @Test

@@ -4,16 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
+import java.util.Spliterators;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
-public class UserService {
+class UserService {
 
     private final UserDAO userDAO;
 
     private final UserDtoMapper mapper;
 
     @Autowired
-    public UserService(final UserDAO userDAO, final UserDtoMapper mapper) {
+    UserService(final UserDAO userDAO, final UserDtoMapper mapper) {
         this.userDAO = userDAO;
         this.mapper = mapper;
     }
@@ -32,5 +36,11 @@ public class UserService {
 
     void delete( final Long id) {
         userDAO.deleteById(id);
+    }
+
+    List<UserDto> list() {
+        return StreamSupport.stream(Spliterators.spliteratorUnknownSize(userDAO.findAll().iterator(), 0), false).
+                map(mapper::mapUserToDto).
+                collect(Collectors.toList());
     }
 }

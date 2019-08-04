@@ -58,6 +58,17 @@
 			"response": []
 		},
 		{
+			"name": "listUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "updateUser",
 			"request": {
 				"method": "POST",
