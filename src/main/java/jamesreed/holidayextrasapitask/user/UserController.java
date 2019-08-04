@@ -15,7 +15,6 @@ public class UserController {
 
     @RequestMapping("/user/{id}")
     public UserDto get(@PathVariable final Long id) {
-        System.out.println("stuff!");
         return userService.get(id);
     }
 
