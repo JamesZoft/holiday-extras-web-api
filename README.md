@@ -4,7 +4,7 @@
 
 **To Run**
 
-`docker run -it -p 8080:8080`
+`docker run -it -p 8080:8080 webserver`
 
 **Currently hosted at**
 
